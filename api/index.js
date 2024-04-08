@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import path from "path";
 
 // importing routes
 import user from "./controller/user.js";
@@ -21,6 +22,8 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
+const __dirname = path.resolve();
+
 const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
@@ -40,6 +43,12 @@ app.use("/api/v1", comment);
 app.listen(5000, () => {
   console.log("server is running on port 5000");
 });
+app.use(express.static(path.join(__dirname, '/frontend/dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
+});
+
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;

@@ -13,15 +13,16 @@ const Header = () => {
 
   const dispatch = useDispatch();
   const location = useLocation();
-  const { currentUser } = useSelector((state) => state.user);
-  const [searchTerm, setSerachTerm] = useState("");
-  const { theme } = useSelector((state) => state.theme);
   const navigate = useNavigate();
+
+  const { currentUser } = useSelector((state) => state.user);
+  const [searchTerm, setSearchTerm] = useState("");
+  const { theme } = useSelector((state) => state.theme);
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const searchTermFromUrl = urlParams.get("searchTerm");
     if (searchTermFromUrl) {
-      setSerachTerm(searchTermFromUrl);
+      setSearchTerm(searchTermFromUrl);
     }
   }, [location.search]);
 
@@ -80,16 +81,18 @@ const Header = () => {
       <form onSubmit={handleSubmit}>
         <TextInput
           type="text"
+          placeholder="Search..."
           rightIcon={AiOutlineSearch}
-          placeholder="Serach..."
           className="hidden lg:inline"
           value={searchTerm}
-          onChange={(e) => setSerachTerm(e.target.value)}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
       </form>
-      <Button className="w-12 h-10 lg:hidden" color="gray" pill>
-        <AiOutlineSearch />
-      </Button>
+      <Link to='/search'>
+        <Button className="w-12 h-10 lg:hidden" color="gray" pill>
+          <AiOutlineSearch />
+        </Button>
+      </Link>
       <div className="flex gap-2 md:order-2">
         <Button
           className="w-12 h-10 hidden sm:inline"

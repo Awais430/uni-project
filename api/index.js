@@ -22,9 +22,9 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
-const __dirname = path.resolve();
 
 const app = express();
+const __dirname = path.resolve();
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -39,16 +39,14 @@ app.use(
 app.use("/api/v1", user);
 app.use("/api/v1", post);
 app.use("/api/v1", comment);
+app.use(express.static(path.join(__dirname, "/frontend/build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+});
 //  creating server
 app.listen(5000, () => {
   console.log("server is running on port 5000");
 });
-app.use(express.static(path.join(__dirname, '/frontend/build')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html'));
-});
-
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;

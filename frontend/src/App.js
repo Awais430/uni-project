@@ -13,8 +13,7 @@ import { OnlyAdminPrivateRoute } from "./Components/OnlyAdminPrivateRoute.jsx";
 import CreatePost from "./pages/CreatePost.jsx";
 import UpdatePost from "./pages/UpdatePost.jsx";
 import { PostPage } from "./pages/PostPage.jsx";
-import  GetPosts  from "./pages/GetPosts.jsx";
-
+import GetPosts from "./pages/GetPosts.jsx";
 
 import { ScrollToTop } from "./Components/ScrollToTop.jsx";
 import Search from "./pages/Search.jsx";

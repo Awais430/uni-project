@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.da46c272.css",
+    "main.js": "/static/js/main.96654a3e.js",
+    "static/js/453.d855a71b.chunk.js": "/static/js/453.d855a71b.chunk.js",
+    "static/media/hamza maqbool.pdf": "/static/media/hamza maqbool.beb810e06e7411df5ca4.pdf",
+    "static/media/ham3.png": "/static/media/ham3.af4e408a8572e1fac4a4.png",
+    "static/media/hamza-removebg-preview (1).png": "/static/media/hamza-removebg-preview (1).3cba3f4b5e30287b48a1.png",
+    "index.html": "/index.html",
+    "main.da46c272.css.map": "/static/css/main.da46c272.css.map",
+    "main.96654a3e.js.map": "/static/js/main.96654a3e.js.map",
+    "453.d855a71b.chunk.js.map": "/static/js/453.d855a71b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.da46c272.css",
+    "static/js/main.96654a3e.js"
+  ]
+}

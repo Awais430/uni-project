@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["http://localh ost:3000", "https://mern-blog-3vqj.onrender.com"],
+    origin: ["http://localhost:3000", "https://mern-blog-3vqj.onrender.com"],
     credentials: true,
   })
 );

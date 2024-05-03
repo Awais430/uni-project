@@ -86,6 +86,28 @@ router.put("/edit-comment/:commentId", VerifyToken, async (req, res, next) => {
   }
 });
 
+// router.delete(
+//   "/delete-comment/:commentId",
+//   VerifyToken,
+//   async (req, res, next) => {
+//     try {
+//       const comment = await Comment.findById(req.params.commentId);
+
+//       if (!comment) {
+//         return next(errorHandler(404, "comment not found"));
+//       }
+//       if (req.user.id !== comment.userId && req.user.isAdmin) {
+//         return next(
+//           errorHandler(403, "you are not allowed to delete this comment")
+//         );
+//       }
+//       await Comment.findByIdAndDelete(req.params.commentId);
+//       res.status(200).json("comment has beeen deleted successfully");
+//     } catch (error) {
+//       next(error);
+//     }
+//   }
+// );
 router.delete(
   "/delete-comment/:commentId",
   VerifyToken,
@@ -94,21 +116,22 @@ router.delete(
       const comment = await Comment.findById(req.params.commentId);
 
       if (!comment) {
-        return next(errorHandler(404, "comment not found"));
+        return next(errorHandler(404, "Comment not found"));
       }
-      if (req.user.id !== comment.userId && req.user.isAdmin) {
+
+      if (!req.user.isAdmin) {
         return next(
-          errorHandler(403, "you are not allowed to delete this comment")
+          errorHandler(403, "You are not allowed to delete comments")
         );
       }
+
       await Comment.findByIdAndDelete(req.params.commentId);
-      res.status(200).json("comment has beeen deleted successfully");
+      res.status(200).json("Comment has been deleted successfully");
     } catch (error) {
       next(error);
     }
   }
 );
-
 router.get("/get-comments", VerifyToken, async (req, res, next) => {
   if (!req.user.isAdmin)
     return next(errorHandler(403, "You are not allowed to get all comments"));
